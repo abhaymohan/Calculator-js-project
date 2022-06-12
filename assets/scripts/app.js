@@ -4,12 +4,14 @@ let currentResult = 0;
 
 let logEntries = [];
 
+
+// function to get user input
 function getUserNumberInput()
 {
     return parseInt(userInput.value);
 }
 
-// fucntion to p
+// fucntion to update logentries
 function writeToLog(operator, previousNumber, enteredNumber , result)
 {
     logEntry = {
@@ -22,6 +24,8 @@ function writeToLog(operator, previousNumber, enteredNumber , result)
     logEntries.push(logEntry);
 }
 
+
+// writes output to webpage
 function createAndWriteOutput(operator, enteredNumber)
 {
     const calcdescription = `${currentResult} ${operator} ${enteredNumber}`;
@@ -46,6 +50,8 @@ function createAndWriteOutput(operator, enteredNumber)
 
 }
 
+
+// utility function for calling other function and showing result
 function calculateResult(calculationType)
 {
     const enteredNumber = getUserNumberInput();
@@ -74,6 +80,8 @@ function calculateResult(calculationType)
 
 }
 
+
+//event handler
 function add()
 {
     calculateResult('+');
