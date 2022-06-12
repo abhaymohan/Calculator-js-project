@@ -41,9 +41,13 @@ function createAndWriteOutput(operator, enteredNumber)
     {
         currentResult *=  enteredNumber;
     }
-    else
+    else if(operator == '/')
     {
         currentResult /=  enteredNumber;
+    }
+    else
+    {
+        currentResult = currentResult ** enteredNumber;
     }
     outputResult(currentResult,calcdescription); // fun definition is in vendor.js file
     return currentResult;
@@ -54,6 +58,16 @@ function createAndWriteOutput(operator, enteredNumber)
 // utility function for calling other function and showing result
 function calculateResult(calculationType)
 {
+    if (
+        calculationType !== "+" &&
+        calculationType !== "-" &&
+        calculationType !== "*" &&
+        calculationType !== "/" &&
+        calculationType !== "**"
+      ){
+          return;
+      }
+
     const enteredNumber = getUserNumberInput();
     const initialResult = currentResult;
     if(calculationType === '+')
@@ -69,12 +83,15 @@ function calculateResult(calculationType)
     {
         mathOperator = '*';
     }
-    else
+    else if(calculationType === '/')
     {
         mathOperator = '/';
     }
-
-    result = createAndWriteOutput(mathOperator,enteredNumber);
+    else
+    {
+        mathOperator = '**';
+    }
+    result = createAndWriteOutput(mathOperator, enteredNumber);
     writeToLog(mathOperator,initialResult,enteredNumber, result);
     console.log(logEntries);
 
@@ -104,9 +121,15 @@ function divide()
     calculateResult('/');
 }
 
+function expo()
+{
+    calculateResult('**');
+}
+
 addBtn.addEventListener('click',add);
 subtractBtn.addEventListener('click',substract);
 multiplyBtn.addEventListener('click',multiply);
 divideBtn.addEventListener('click',divide);
+expobtn.addEventListener('click',expo);
 
 
