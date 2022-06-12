@@ -9,6 +9,7 @@ function getUserNumberInput()
     return parseInt(userInput.value);
 }
 
+// fucntion to p
 function writeToLog(operator, previousNumber, enteredNumber , result)
 {
     logEntry = {
@@ -29,7 +30,7 @@ function createAndWriteOutput(operator, enteredNumber)
         currentResult += enteredNumber;
     }
     else if(operator == '-')
-    {
+    { 
         currentResult -=  enteredNumber;
     }
     else if(operator == '*')
@@ -45,44 +46,54 @@ function createAndWriteOutput(operator, enteredNumber)
 
 }
 
-function add()
+function calculateResult(calculationType)
 {
     const enteredNumber = getUserNumberInput();
     const initialResult = currentResult;
-    result = createAndWriteOutput('+',enteredNumber);
-    writeToLog('+',initialResult,enteredNumber, result);
+    if(calculationType === '+')
+    {
+        mathOperator = '+';
+        
+    }
+    else if(calculationType === '-')
+    {
+        mathOperator = '-';
+    }
+    else if(calculationType === '*')
+    {
+        mathOperator = '*';
+    }
+    else
+    {
+        mathOperator = '/';
+    }
+
+    result = createAndWriteOutput(mathOperator,enteredNumber);
+    writeToLog(mathOperator,initialResult,enteredNumber, result);
     console.log(logEntries);
-    
-    
+
+}
+
+function add()
+{
+    calculateResult('+');
 }
 
 function substract()
-{
-    const enteredNumber = getUserNumberInput();
-    const initialResult = currentResult;
-    result = createAndWriteOutput('-',enteredNumber);
-    writeToLog('-',initialResult,enteredNumber, result);
-    console.log(logEntries);
+{ 
+    calculateResult('-');
 }
 
 
 function multiply()
 {
-    const enteredNumber = getUserNumberInput();
-    const initialResult = currentResult;
-    result = createAndWriteOutput('*',enteredNumber);
-    writeToLog('*',initialResult,enteredNumber, result);
-    console.log(logEntries);
+    calculateResult('*');
 }
 
 
 function divide()
 {
-    const enteredNumber = getUserNumberInput();
-    const initialResult = currentResult;
-    result = createAndWriteOutput('/',enteredNumber);
-    writeToLog('/',initialResult,enteredNumber, result);
-    console.log(logEntries);
+    calculateResult('/');
 }
 
 addBtn.addEventListener('click',add);
