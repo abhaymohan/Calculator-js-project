@@ -58,17 +58,19 @@ function createAndWriteOutput(operator, enteredNumber)
 // utility function for calling other function and showing result
 function calculateResult(calculationType)
 {
+    const enteredNumber = getUserNumberInput();
     if (
         calculationType !== "+" &&
         calculationType !== "-" &&
         calculationType !== "*" &&
         calculationType !== "/" &&
-        calculationType !== "**"
+        calculationType !== "**" || 
+        !enteredNumber
       ){
           return;
       }
 
-    const enteredNumber = getUserNumberInput();
+    
     const initialResult = currentResult;
     if(calculationType === '+')
     {
