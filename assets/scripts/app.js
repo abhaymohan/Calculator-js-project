@@ -101,7 +101,7 @@ function calculateResult(calculationType)
 
 
 //event handler
-function add()
+/*function add()
 {
     calculateResult('+');
 }
@@ -132,6 +132,16 @@ addBtn.addEventListener('click',add);
 subtractBtn.addEventListener('click',substract);
 multiplyBtn.addEventListener('click',multiply);
 divideBtn.addEventListener('click',divide);
-expobtn.addEventListener('click',expo);
+expobtn.addEventListener('click',expo);*/
 
+// above commented code works fine but we could get same
+// functionality by using bind() and that is what we have done
+// below 
+
+
+addBtn.addEventListener('click',calculateResult.bind(this,'+'));
+subtractBtn.addEventListener('click',calculateResult.bind(this,'-'));
+multiplyBtn.addEventListener('click',calculateResult.bind(this,'*'));
+divideBtn.addEventListener('click',calculateResult.bind(this,'/'));
+expobtn.addEventListener('click',calculateResult.bind(this,"**"));
 
